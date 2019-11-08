@@ -1,0 +1,21 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Angular 8",
+      "resume":"résumé de l'article angular 8",
+      "body":"article complet sur angular 8",
+      "author": "Karim ZIKY"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "learn angular fastly!",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

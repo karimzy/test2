@@ -1,0 +1,100 @@
+<div class="row my-4">
+    <div class="col-md-6">
+        <h3>Liste des articles</h3>
+    </div>
+   <!---avec emmet : button.btn.btn-dark.btn-sm>i.fa.fa-plus+{Nouveau article}-->
+    <div class="col-md-6 text-right">
+        <button (click)="showForm=!showForm" class="btn btn-dark btn-sm">
+            <i class="fa fa-plus"></i>Nouveau Article
+        </button>
+
+    </div>
+</div>
+
+<!--avec emmet : .row>.col-md-6.mx-auto-->
+<div class="row" *ngIf="showForm">
+    <div class="col-md-6 mx-auto">
+        <!-- formulaire d'ajout avec emmet : .form-group>label+input.form-control-->
+        <div class="form-group">
+            <label for="label">Titre</label>
+            <input [(ngModel)]="monArticle.title" id="label" type="text" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="label">Résumé</label>
+          <input [(ngModel)]="monArticle.resume" id="label" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="label">Auteur</label>
+          <input [(ngModel)]="monArticle.author" id="label" type="text" class="form-control">
+        </div>
+
+        <!---b4-form-checkbox-->
+        <!--
+          <div class="form-check my-2">
+          <label class="form-check-label">
+            <input [(ngModel)]="monArticle.completed" type="checkbox" class="form-check-input" name="" id="" value="" >
+            Completed
+          </label>
+        </div>
+        -->
+        
+        <!--{{ monArticle | json }}-->
+
+        <!-- bouton d'update : button.btn.btn-success.btn-bock>i.fa.fa-send+{Npuveau article}--->
+        <button *ngIf="editForm"  (click)="updatePost()" class="btn btn-warning btn-block">
+          <i class="fa fa-refresh"></i>Mis à jour article
+      </button>
+        <!-- bouton d'ajout-->
+        <button *ngIf="!editForm" (click)="persistPost()" class="btn btn-success btn-block">
+            <i class="fa fa-send"></i>Nouveau article
+        </button>
+
+    </div>
+</div>
+
+<!-- .row>.col-md-6.mx-auto -->
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        Liste des articles :
+        <!--la recherche : input.form-control-->
+        <input (keyup)="searchPosts()" [(ngModel)]="searchText" placeholder="Search..." type="text" class="form-control">
+        <!-- b4-list-badge -->
+      <ul class="list-group">
+         <!---->
+          <li *ngFor="let post of resultPosts" class="list-group-item d-flex justify-content-between align-items-center">
+            
+            <p>
+            Titre : <span class="post-title">"{{ post.title }}"</span>  écrit par : <span class="post-author">{{post.author}}</span>
+            <br>
+            Résumé : {{ (post.body).substr(0,100) }}
+            </p>
+            <!-- i.fa.fa-thumbs-up -->
+             <!-- 
+              <span (click)="changerCompleted(post)" [ngClass]="{
+                'badge-info': post.completed,
+                'badge-danger': !post.completed
+              }"  class="badge badge-secondary badge-pill">
+                <i class="fa" [ngClass]="{
+                    'fa-thumbs-up': post.completed,
+                    'fa-thumbs-down': !post.completed
+                }"></i>
+              </span>
+             --> 
+             
+
+              <!--bouton afficher : button.btn.btn-warning.btn-sm>i.fa.fa-pencil 
+             <button (click)="editPost(post)" class="btn btn-warning btn-sm">
+                <i class="fa fa-pencil"></i>
+              </button>-->
+              <!-- button.btn.btn-sm.btn-dark>i.fa.fa-trash-->
+              <!--<button (click)="deletePost(post.id)" class="btn btn-sm btn-dark">
+                  <i class="fa fa-trash"></i>
+              </button>-->
+              <button (click)="affichePost(post)" class="btn btn-sm btn-dark">Afficher</button>
+          </li>
+          
+      </ul>
+    </div>
+</div>

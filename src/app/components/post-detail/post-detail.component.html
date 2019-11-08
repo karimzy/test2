@@ -1,0 +1,63 @@
+<h1>Article {{postId}} : {{post.title}} </h1>
+
+ <h6>Contenu :</h6>
+<p>{{post.body}}</p>
+
+
+<!-- .row>.col-md-6.mx-auto -->
+<div class="row">
+        <div class="col-md-6 mx-auto">
+            <h5>Liste des commentaires :</h5>
+            <!--la recherche : input.form-control
+            <input (keyup)="searchPosts()" [(ngModel)]="searchText" placeholder="Search..." type="text" class="form-control">
+            -->
+            <!-- b4-list-badge -->
+          <ul class="list-group">
+             <!---->
+              <li *ngFor="let comment of comments" class="list-group-item d-flex justify-content-between align-items-center">
+                <p>
+                <b>Name :</b> <span class="post-title">"{{ comment.name }}"</span> 
+                <br>
+                <b>Message :</b> {{ comment.body }}
+                </p>
+                  <!--<button (click)="affichePost(post)" class="btn btn-sm btn-dark">Afficher</button>-->
+              </li>
+              
+          </ul>
+        </div>
+</div>
+
+<!--______________________Formulaire pour ajouter un commentaire______________________________________-->
+<div class="row my-4">
+        <div class="col-md-6">
+        </div>
+       <!---avec emmet : button.btn.btn-dark.btn-sm>i.fa.fa-plus+{Nouveau article}-->
+        <div class="col-md-6 text-right">
+            <button (click)="showForm=true" class="btn btn-dark btn-sm">
+                <i class="fa fa-plus"></i>Ajouter un commentaire
+            </button>
+    
+        </div>
+    </div>
+    
+    <!--avec emmet : .row>.col-md-6.mx-auto-->
+    <div class="row" *ngIf="showForm">
+        <div class="col-md-6 mx-auto">
+            <!-- formulaire d'ajout avec emmet : .form-group>label+input.form-control-->
+            <div class="form-group">
+                <label for="label">Titre</label>
+                <input [(ngModel)]="monCommentaire.title" id="label" type="text" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="label">Message</label>
+              <input [(ngModel)]="monCommentaire.body" id="label" type="text" class="form-control">
+            </div>
+
+            <!-- bouton ajouter commentaire-->
+            <button  (click)="persistComment()" class="btn btn-success btn-block">
+                <i class="fa fa-send"></i>Ajouter un commentaire
+            </button>
+    
+        </div>
+    </div>

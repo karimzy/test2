@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "label": "learn PHP",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "label": "learn Java",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "label": "learn Ngrx",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "label": "gjhjkhjk",
+      "completed": true,
+      "id": 5
+    }
+  ]
+}
